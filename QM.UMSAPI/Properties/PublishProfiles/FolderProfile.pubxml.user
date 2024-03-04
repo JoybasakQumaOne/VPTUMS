@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>D:\WorkSpace\Office\Pentechs\Published\Book\UMS</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="App_Data/Api.config">
+      <publishTime>06/27/2022 12:26:24</publishTime>
+    </File>
+    <File Include="App_Data/MessageConfigurations.Config">
+      <publishTime>10/19/2020 19:28:13</publishTime>
+    </File>
+    <File Include="App_Data/QueryConfigurations.Config">
+      <publishTime>06/27/2022 13:00:07</publishTime>
+    </File>
+    <File Include="bin/Antlr3.Runtime.dll">
+      <publishTime>09/01/2020 10:36:39</publishTime>
+    </File>
+    <File Include="bin/App_Data/Api.config">
+      <publishTime>06/27/2022 12:26:24</publishTime>
+    </File>
+    <File Include="bin/App_Data/MessageConfigurations.Config">
+      <publishTime>10/19/2020 19:28:13</publishTime>
+    </File>
+    <File Include="bin/App_Data/QueryConfigurations.Config">
+      <publishTime>06/27/2022 13:00:07</publishTime>
+    </File>
+    <File Include="bin/CommonApplicationFramework.dll">
+      <publishTime>12/21/2021 14:57:54</publishTime>
+    </File>
+    <File Include="bin/CommonApplicationFramework.dll.config">
+      <publishTime>09/30/2020 14:20:45</publishTime>
+    </File>
+    <File Include="bin/CommonApplicationFramework.pdb">
+      <publishTime>12/21/2021 14:57:54</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.dll">
+      <publishTime>09/01/2020 10:36:39</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Practices.Unity.Configuration.dll">
+      <publishTime>09/01/2020 10:36:39</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Practices.Unity.dll">
+      <publishTime>09/01/2020 10:36:39</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Practices.Unity.RegistrationByConvention.dll">
+      <publishTime>09/01/2020 10:36:39</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Infrastructure.dll">
+      <publishTime>09/01/2020 10:36:39</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>09/01/2020 10:36:39</publishTime>
+    </File>
+    <File Include="bin/QM.eBook.DMS.dll">
+      <publishTime>06/27/2022 13:07:12</publishTime>
+    </File>
+    <File Include="bin/QM.eBook.DMS.pdb">
+      <publishTime>06/27/2022 13:07:12</publishTime>
+    </File>
+    <File Include="bin/QM.UMS.Business.dll">
+      <publishTime>06/27/2022 13:07:12</publishTime>
+    </File>
+    <File Include="bin/QM.UMS.Business.dll.config">
+      <publishTime>09/01/2020 10:36:38</publishTime>
+    </File>
+    <File Include="bin/QM.UMS.Business.pdb">
+      <publishTime>06/27/2022 13:07:12</publishTime>
+    </File>
+    <File Include="bin/QM.UMS.Models.dll">
+      <publishTime>06/27/2022 13:07:12</publishTime>
+    </File>
+    <File Include="bin/QM.UMS.Models.pdb">
+      <publishTime>06/27/2022 13:07:12</publishTime>
+    </File>
+    <File Include="bin/QM.UMS.Repository.dll">
+      <publishTime>06/27/2022 13:07:12</publishTime>
+    </File>
+    <File Include="bin/QM.UMS.Repository.pdb">
+      <publishTime>06/27/2022 13:07:12</publishTime>
+    </File>
+    <File Include="bin/QM.UMSAPI.dll">
+      <publishTime>06/27/2022 13:07:13</publishTime>
+    </File>
+    <File Include="bin/QM.UMSAPI.pdb">
+      <publishTime>06/27/2022 13:07:13</publishTime>
+    </File>
+    <File Include="bin/StackExchange.Redis.StrongName.dll">
+      <publishTime>01/18/2018 04:52:10</publishTime>
+    </File>
+    <File Include="bin/System.Net.Http.Formatting.dll">
+      <publishTime>09/01/2020 10:36:39</publishTime>
+    </File>
+    <File Include="bin/System.Web.Helpers.dll">
+      <publishTime>09/01/2020 10:36:39</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.dll">
+      <publishTime>09/01/2020 10:36:39</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.WebHost.dll">
+      <publishTime>09/01/2020 10:36:39</publishTime>
+    </File>
+    <File Include="bin/System.Web.Mvc.dll">
+      <publishTime>09/01/2020 10:36:39</publishTime>
+    </File>
+    <File Include="bin/System.Web.Optimization.dll">
+      <publishTime>09/01/2020 10:36:39</publishTime>
+    </File>
+    <File Include="bin/System.Web.Providers.dll">
+      <publishTime>09/01/2020 10:36:39</publishTime>
+    </File>
+    <File Include="bin/System.Web.Razor.dll">
+      <publishTime>09/01/2020 10:36:39</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Deployment.dll">
+      <publishTime>09/01/2020 10:36:39</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.dll">
+      <publishTime>09/01/2020 10:36:39</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Razor.dll">
+      <publishTime>09/01/2020 10:36:39</publishTime>
+    </File>
+    <File Include="bin/Unity.WebApi.dll">
+      <publishTime>09/01/2020 10:36:39</publishTime>
+    </File>
+    <File Include="bin/WebGrease.dll">
+      <publishTime>09/01/2020 10:36:39</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>09/01/2020 10:36:38</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>09/01/2020 10:36:38</publishTime>
+    </File>
+    <File Include="Resources/Book.png">
+      <publishTime>09/01/2020 10:36:38</publishTime>
+    </File>
+    <File Include="Resources/ChangedPasswordEmail.html">
+      <publishTime>10/27/2021 15:52:23</publishTime>
+    </File>
+    <File Include="Resources/CREmailContentXML.xml">
+      <publishTime>09/01/2020 10:36:38</publishTime>
+    </File>
+    <File Include="Resources/CustomerNewRegistrationEmail.html">
+      <publishTime>10/27/2021 15:52:45</publishTime>
+    </File>
+    <File Include="Resources/EmailContent.xml">
+      <publishTime>09/01/2020 10:36:38</publishTime>
+    </File>
+    <File Include="Resources/EmailFormat.html">
+      <publishTime>09/01/2020 10:36:38</publishTime>
+    </File>
+    <File Include="Resources/ExclamationIcon.png">
+      <publishTime>09/01/2020 10:36:38</publishTime>
+    </File>
+    <File Include="Resources/facebook.png">
+      <publishTime>09/01/2020 10:36:38</publishTime>
+    </File>
+    <File Include="Resources/LGL_001.png">
+      <publishTime>09/01/2020 10:36:38</publishTime>
+    </File>
+    <File Include="Resources/LGL_002.png">
+      <publishTime>09/01/2020 10:36:38</publishTime>
+    </File>
+    <File Include="Resources/LGL_003.png">
+      <publishTime>09/01/2020 10:36:38</publishTime>
+    </File>
+    <File Include="Resources/LGL_004.png">
+      <publishTime>09/01/2020 10:36:38</publishTime>
+    </File>
+    <File Include="Resources/LGL_005.png">
+      <publishTime>09/01/2020 10:36:38</publishTime>
+    </File>
+    <File Include="Resources/LGL_006.png">
+      <publishTime>09/01/2020 10:36:38</publishTime>
+    </File>
+    <File Include="Resources/LinkCompanyEmail.html">
+      <publishTime>09/01/2020 10:36:38</publishTime>
+    </File>
+    <File Include="Resources/Lock.png">
+      <publishTime>09/01/2020 10:36:38</publishTime>
+    </File>
+    <File Include="Resources/LoginButton.png">
+      <publishTime>09/01/2020 10:36:38</publishTime>
+    </File>
+    <File Include="Resources/Logo.png">
+      <publishTime>09/01/2020 10:36:38</publishTime>
+    </File>
+    <File Include="Resources/NewRegistrationEmail.html">
+      <publishTime>10/27/2021 15:52:58</publishTime>
+    </File>
+    <File Include="Resources/ResetPasswordButton.png">
+      <publishTime>09/01/2020 10:36:38</publishTime>
+    </File>
+    <File Include="Resources/ResetPasswordEmail.html">
+      <publishTime>10/27/2021 15:53:14</publishTime>
+    </File>
+    <File Include="Resources/Tick.png">
+      <publishTime>09/01/2020 10:36:38</publishTime>
+    </File>
+    <File Include="Resources/twitter.png">
+      <publishTime>09/01/2020 10:36:38</publishTime>
+    </File>
+    <File Include="Resources/UserIcon.png">
+      <publishTime>09/01/2020 10:36:38</publishTime>
+    </File>
+    <File Include="Resources/VerifyButton.png">
+      <publishTime>09/01/2020 10:36:38</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>06/27/2022 13:07:13</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

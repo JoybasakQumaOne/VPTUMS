@@ -1,0 +1,17 @@
+﻿using CommonApplicationFramework.Common;
+using System.ComponentModel.DataAnnotations;
+
+namespace QM.UMS.Models
+{
+   public class DepartmentModel:BaseModel
+    {
+        public int DepartmentId { get; set; }
+
+        [Required(ErrorMessage = "Department Name is required.")]
+      //  [StringLength(100, MinimumLength = 1, ErrorMessage = "Department Name, Must be between 1 and 100 characters.")]
+        [RegularExpression("^([^<>'!@$%^*]){1,100}$", ErrorMessage = "Department Name, Special characters are not allowed.")]
+        public string DepartmentName { get; set; }
+        public ItemCode Module { get; set; }
+        public bool Status { get; set; }
+    }
+}

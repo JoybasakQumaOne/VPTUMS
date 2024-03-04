@@ -1,0 +1,20 @@
+﻿namespace QM.UMS.Models
+{
+    #region Namepace
+
+    #endregion
+
+    public enum User { User, Customer };
+
+    public enum Actions { ADD, EDIT, DELETE, LINK , DELINK}
+    public enum ImageTypeEnum { LARGE, THUMBNAIL, preview_xxs, preview_xs, preview_s, preview_m, preview_l, preview_xl }
+    public enum DocumentType { EMAIL_ATTACHEMNT, ORGANIZATION_LOGO, INVOICE, CERTIFICATE, COMMENT, USERIMAGE, CUSTOMERIMAGE, BOOK_IMAGE, PAGE, PRINTED_BOOK, CATEGORY, BOOK_DIV_IMAGE, ORGANIZATION_BOOK_IMAGE, PRODUCT_IMAGE, CUSTOMER_BOOK_IMAGE, BOOK_SETTING, PAGE_SETTING, BOOK_COVER, CATEGORY_BANNER, CATEGORY_THUMBNAIL, PRODUCT_THUMBNAIL, VOUCHERCERTIFICATE }
+    public enum EcommObject { CUSTOMER, PRODUCT, CATEGORY, ORGANIZATION, BLOG, PROJECT, ORDER, GUEST_ORDER, EMAIL, INVOICE, CART, CERTIFICATE, PRODUCTION, COMMENT, PRINTED_BOOK, CUSTOMERIMAGE, VOUCHER }
+
+    public enum AuthMode { AD}
+
+    public enum Apps
+    {
+        EKAHSALES, EKAHOFFICE
+    }
+}

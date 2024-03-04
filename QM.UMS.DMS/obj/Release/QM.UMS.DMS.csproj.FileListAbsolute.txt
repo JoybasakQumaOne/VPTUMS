@@ -1,0 +1,9 @@
+D:\WorkSpace\Office\Pentechs\Books\UMSService\QM.UMS.DMS\bin\Release\QM.eBook.DMS.dll
+D:\WorkSpace\Office\Pentechs\Books\UMSService\QM.UMS.DMS\bin\Release\QM.eBook.DMS.pdb
+D:\WorkSpace\Office\Pentechs\Books\UMSService\QM.UMS.DMS\bin\Release\Newtonsoft.Json.dll
+D:\WorkSpace\Office\Pentechs\Books\UMSService\QM.UMS.DMS\bin\Release\Newtonsoft.Json.xml
+D:\WorkSpace\Office\Pentechs\Books\UMSService\QM.UMS.DMS\obj\Release\QM.UMS.DMS.csprojAssemblyReference.cache
+D:\WorkSpace\Office\Pentechs\Books\UMSService\QM.UMS.DMS\obj\Release\QM.UMS.DMS.csproj.CoreCompileInputs.cache
+D:\WorkSpace\Office\Pentechs\Books\UMSService\QM.UMS.DMS\obj\Release\QM.UMS.DMS.csproj.CopyComplete
+D:\WorkSpace\Office\Pentechs\Books\UMSService\QM.UMS.DMS\obj\Release\QM.eBook.DMS.dll
+D:\WorkSpace\Office\Pentechs\Books\UMSService\QM.UMS.DMS\obj\Release\QM.eBook.DMS.pdb

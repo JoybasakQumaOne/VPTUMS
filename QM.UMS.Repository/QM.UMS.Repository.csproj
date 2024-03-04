@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{804C1730-C613-45D3-AEAD-DC5B7953694F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>QM.UMS.Repository</RootNamespace>
+    <AssemblyName>QM.UMS.Repository</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CommonApplicationFramework, Version=1.0.0.1, Culture=neutral, PublicKeyToken=29662cdbed61eec8, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Dependencies\CommonApplicationFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Dependencies\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Helper\RequestHeader.cs" />
+    <Compile Include="IRepository\IActionRepository.cs" />
+    <Compile Include="IRepository\IAttributeMasterRepository.cs" />
+    <Compile Include="IRepository\IAttributeOptionRepository.cs" />
+    <Compile Include="IRepository\IAttributeSectionRepository.cs" />
+    <Compile Include="IRepository\IAttributeValueRepository.cs" />
+    <Compile Include="IRepository\ICommonHelperRepository.cs" />
+    <Compile Include="IRepository\ICustomerRepository.cs" />
+    <Compile Include="IRepository\IDepartmentRepository.cs" />
+    <Compile Include="IRepository\IDesignationRepository.cs" />
+    <Compile Include="IRepository\IDocumentProcessRepository.cs" />
+    <Compile Include="IRepository\IInstanceRepository.cs" />
+    <Compile Include="IRepository\IMasterRepository.cs" />
+    <Compile Include="IRepository\IModuleRepository.cs" />
+    <Compile Include="IRepository\IOrganizationAttributeOptionRepository.cs" />
+    <Compile Include="IRepository\IOrganizationAttributeRepository.cs" />
+    <Compile Include="IRepository\IOrganizationRepository.cs" />
+    <Compile Include="IRepository\IOrganizationTypeRepository.cs" />
+    <Compile Include="IRepository\IPhoneRepository.cs" />
+    <Compile Include="IRepository\IResourceRepository.cs" />
+    <Compile Include="IRepository\IRoleRepository.cs" />
+    <Compile Include="IRepository\IUserGroupRepository.cs" />
+    <Compile Include="IRepository\IUsersRepository.cs" />
+    <Compile Include="IRepository\IUserTypeRepository.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\ActionRepository.cs" />
+    <Compile Include="Repository\AttributeMasterRepository.cs" />
+    <Compile Include="Repository\AttributeOptionRepository.cs" />
+    <Compile Include="Repository\AttributeSectionRepository.cs" />
+    <Compile Include="Repository\AttributeValueRepository.cs" />
+    <Compile Include="Repository\CommonHelperRepository.cs" />
+    <Compile Include="Repository\CustomerRepository.cs" />
+    <Compile Include="Repository\DepartmentRepository.cs" />
+    <Compile Include="Repository\DesignationRepository.cs" />
+    <Compile Include="Repository\DocumentProcessRepository.cs" />
+    <Compile Include="Repository\InstanceRepository.cs" />
+    <Compile Include="Repository\MasterRepository.cs" />
+    <Compile Include="Repository\ModuleRepository.cs" />
+    <Compile Include="Repository\OrganizationAttributeOptionRepository.cs" />
+    <Compile Include="Repository\OrganizationAttributeRepository.cs" />
+    <Compile Include="Repository\OrganizationRepository.cs" />
+    <Compile Include="Repository\OrganizationTypeRepository.cs" />
+    <Compile Include="Repository\PhoneRepository.cs" />
+    <Compile Include="Repository\ResourceRepository.cs" />
+    <Compile Include="Repository\RoleRepository.cs" />
+    <Compile Include="Repository\UserGroupRepository.cs" />
+    <Compile Include="Repository\UsersRepository.cs" />
+    <Compile Include="Repository\UserTypeRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\QM.UMS.DMS\QM.UMS.DMS.csproj">
+      <Project>{f5dc9f7c-7f1c-4d5e-8358-b1b59d3c5cf8}</Project>
+      <Name>QM.UMS.DMS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\QM.UMS.Models\QM.UMS.Models.csproj">
+      <Project>{ede81567-c85a-4ffd-a9c7-dea8f5c6f5ba}</Project>
+      <Name>QM.UMS.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,193 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<EmailFormats>
+  <EmailVerification>
+    <subject>Please verify your email address</subject>
+    <emailcontent>
+      <header>Welcome to "Application_Name"</header>
+      <emailbody>
+        <![CDATA[
+          <tr>
+            <td width="100%" align="left" valign="top" style="padding: 0 35px;">
+              <p style="margin: 10px 0 10px 0; font-size: 12px; color: #58595B; font-family: 'Loto',sans-serif; text-align: left; line-height: 20px;">
+                Hi [name]
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td width="100%" align="left" valign="top" style="padding: 0 35px;">
+              <p style="margin: 10px 0 10px 0; font-size: 12px; color: #58595B; font-family: 'Loto',sans-serif; text-align: left; line-height: 20px;">
+                Welcome to "Application_Name".
+              </p>
+              <p style="margin: 10px 0 10px 0; font-size: 12px; color: #58595B; font-family: 'Loto',sans-serif; text-align: left; line-height: 20px;">
+                In order to use your account we need to verify you have entered your email address correctly. 
+                Please click on the link given below to verify your Email and set your password.
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td width="100%" align="left" valign="top" style="padding: 0 35px;">
+              <p style="margin: 10px 0 10px 0; font-size: 12px; color: #58595B; font-family: 'Loto',sans-serif;">
+                <a style="color: #00C2DC;" href="[websiteurl]/VerifyEmail?c=[passwordresetcode]">Verify me now</a>
+              </p>
+            </td>
+          </tr>
+           <tr>
+            <td width="100%" align="left" valign="top" style="padding: 0 35px;">
+              <p style="margin: 20px 0 20px 0;">
+                
+              </p>
+            </td>
+          </tr>
+      ]]>
+      </emailbody>
+    </emailcontent>
+  </EmailVerification>
+
+  <PasswordRemainder>
+    <subject>Please change your current password</subject>
+    <emailcontent>
+      <header>Welcome to "Application_Name"</header>
+      <emailbody>
+        <![CDATA[
+          <tr>
+            <td width="100%" align="left" valign="top" style="padding: 0 35px;">
+              <p style="margin: 10px 0 10px 0; font-size: 12px; color: #58595B; font-family: 'Loto',sans-serif; text-align: left; line-height: 20px;">
+                Hi [name]
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td width="100%" align="left" valign="top" style="padding: 0 35px;">
+              <p style="margin: 10px 0 10px 0; font-size: 12px; color: #58595B; font-family: 'Loto',sans-serif; text-align: left; line-height: 20px;">
+                A request has been made recently to reset your SERVtracker password
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td width="100%" align="left" valign="top" style="padding: 0 35px;">
+              <p style="margin: 5px 0 5px 0; font-size: 12px; color: #58595B; font-family: 'Loto',sans-serif;">
+                Click the link below to reset your password for : [email]
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td width="100%" align="left" valign="top" style="padding: 0 35px;">
+              <p style="margin: 10px 0 10px 0; font-size: 12px; color: #58595B; font-family: 'Loto',sans-serif;">
+                <a href="[websiteurl]/PasswordReset?c=[passwordresetcode]">Reset my password</a>
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td width="100%" align="left" valign="top" style="padding: 0 35px;">
+              <p style="margin: 20px 0 20px 0;">
+                
+              </p>
+            </td>
+          </tr>
+      ]]>
+      </emailbody>
+    </emailcontent>
+  </PasswordRemainder>
+
+  <ResetPassword>
+    <subject>Please change your current password</subject>
+    <emailcontent>
+      <header>Welcome to "Application_Name"</header>
+      <emailbody>
+        <![CDATA[
+          <tr>
+            <td width="100%" align="left" valign="top" style="padding: 0 35px;">
+              <p style="margin: 10px 0 10px 0; font-size: 12px; color: #58595B; font-family: 'Loto',sans-serif; text-align: left; line-height: 20px;">
+                Hi [name]
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td width="100%" align="left" valign="top" style="padding: 0 35px;">
+              <p style="margin: 10px 0 10px 0; font-size: 12px; color: #58595B; font-family: 'Loto',sans-serif; text-align: left; line-height: 20px;">
+                A request has been made recently to reset your "Application_Name" password
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td width="100%" align="left" valign="top" style="padding: 0 35px;">
+              <p style="margin: 5px 0 5px 0; font-size: 12px; color: #58595B; font-family: 'Loto',sans-serif;">
+                Click the link below to reset your password for : [email]
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td width="100%" align="left" valign="top" style="padding: 0 35px;">
+              <p style="margin: 10px 0 10px 0; font-size: 12px; color: #58595B; font-family: 'Loto',sans-serif;">
+                <a href="[websiteurl]/PasswordReset?c=[passwordresetcode]">Reset my password</a>
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td width="100%" align="left" valign="top" style="padding: 0 35px;">
+              <p style="margin: 20px 0 20px 0;">
+                
+              </p>
+            </td>
+          </tr>
+      ]]>
+      </emailbody>
+    </emailcontent>
+  </ResetPassword>
+
+  <SendMessage>
+    <subject>Webmail from "Application_Name"</subject>
+    <emailcontent>
+      <header>Welcome to "Application_Name"</header>
+      <emailbody>
+        <![CDATA[
+          <tr>
+            <td width="100%" align="left" valign="top" style="padding: 0 35px;">
+              <p style="margin: 10px 0 10px 0; font-size: 12px; color: #58595B; font-family: 'Loto',sans-serif; text-align: left; line-height: 20px;">
+                Hi [name]
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td width="100%" align="left" valign="top" style="padding: 0 35px;">
+              <p style="margin: 10px 0 10px 0; font-size: 12px; color: #58595B; font-family: 'Loto',sans-serif; text-align: left; line-height: 20px;">
+                [user] send you the following message:
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td width="100%" align="left" valign="top" style="padding: 0 35px;">
+              <p style="margin: 5px 0 5px 0; font-size: 12px; color: #58595B; font-family: 'Loto',sans-serif;">
+                [msg]
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td width="100%" align="left" valign="top" style="padding: 0 35px;">
+              <p style="margin: 10px 0 10px 0; font-size: 12px; color: #58595B; font-family: 'Loto',sans-serif; text-align: left; line-height: 20px;">
+                Here is more details about user<br />
+                Name : [user]<br />
+                Email Id: [email]<br />
+                Phone No.: [phone]
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td width="100%" align="left" valign="top" style="padding: 0 35px;">
+              <p style="margin: 20px 0 20px 0;">
+                
+              </p>
+            </td>
+          </tr>
+      ]]>
+      </emailbody>
+    </emailcontent>
+  </SendMessage>
+
+
+
+
+</EmailFormats>
+
+

@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BC3A0FC1-EB14-49D8-972F-5F145ABE86F4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>QM.UMS.Business</RootNamespace>
+    <AssemblyName>QM.UMS.Business</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CommonApplicationFramework, Version=1.0.0.1, Culture=neutral, PublicKeyToken=29662cdbed61eec8, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Dependencies\CommonApplicationFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="DMSMicroService, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Dependencies\DMSMicroService.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Dependencies\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Dependencies\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.RegistrationByConvention, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Dependencies\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Dependencies\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.DirectoryServices.AccountManagement" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Dependencies\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Dependencies\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Dependencies\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Unity.WebApi, Version=5.2.3.0, Culture=neutral, PublicKeyToken=43da31bc42a85347, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Dependencies\Unity.WebApi.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\UnityConfig.cs" />
+    <Compile Include="App_Start\UnityResolver.cs" />
+    <Compile Include="App_Start\UnitySettings.cs" />
+    <Compile Include="Business\ActionBusiness.cs" />
+    <Compile Include="Business\AttributeMasterBusiness.cs" />
+    <Compile Include="Business\AttributeOptionBusiness.cs" />
+    <Compile Include="Business\AttributeSectionBusiness.cs" />
+    <Compile Include="Business\AttributeValueBusiness.cs" />
+    <Compile Include="Business\CustomerBusiness.cs" />
+    <Compile Include="Business\DepartmentBusiness.cs" />
+    <Compile Include="Business\DesignationBusiness.cs" />
+    <Compile Include="Business\InstanceBusiness.cs" />
+    <Compile Include="Business\MasterBusiness.cs" />
+    <Compile Include="Business\ModuleBusiness.cs" />
+    <Compile Include="Business\OrganizationAttributeBusiness.cs" />
+    <Compile Include="Business\OrganizationAttributeOptionBusiness.cs" />
+    <Compile Include="Business\OrganizationBusiness.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\OrganizationTypeBusiness.cs" />
+    <Compile Include="Business\PhoneBusiness.cs" />
+    <Compile Include="Business\ResourceBusiness.cs" />
+    <Compile Include="Business\RoleBusiness.cs" />
+    <Compile Include="Business\UserGroupBusiness.cs" />
+    <Compile Include="Business\UsersBusiness.cs" />
+    <Compile Include="Business\UserTypeBusiness.cs" />
+    <Compile Include="IBusiness\IActionBusiness.cs" />
+    <Compile Include="IBusiness\IAttributeMasterBusiness.cs" />
+    <Compile Include="IBusiness\IAttributeOptionBusiness.cs" />
+    <Compile Include="IBusiness\IAttributeSectionBusiness.cs" />
+    <Compile Include="IBusiness\IAttributeValueBusiness.cs" />
+    <Compile Include="IBusiness\ICustomerBusiness.cs" />
+    <Compile Include="IBusiness\IDepartmentBusiness.cs" />
+    <Compile Include="IBusiness\IDesignationBusiness.cs" />
+    <Compile Include="IBusiness\IInstanceBusiness.cs" />
+    <Compile Include="IBusiness\IMasterBusiness.cs" />
+    <Compile Include="IBusiness\IModuleBusiness.cs" />
+    <Compile Include="IBusiness\IOrganizationAttributeBusiness.cs" />
+    <Compile Include="IBusiness\IOrganizationAttributeOptionBusiness.cs" />
+    <Compile Include="IBusiness\IOrganizationBusiness.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="IBusiness\IOrganizationTypeBusiness.cs" />
+    <Compile Include="IBusiness\IPhoneBusiness.cs" />
+    <Compile Include="IBusiness\IResourceBusiness.cs" />
+    <Compile Include="IBusiness\IRoleBusiness.cs" />
+    <Compile Include="IBusiness\IUserGroupBusiness.cs" />
+    <Compile Include="IBusiness\IUsersBusiness.cs" />
+    <Compile Include="IBusiness\IUserTypeBusiness.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\QM.UMS.DMS\QM.UMS.DMS.csproj">
+      <Project>{f5dc9f7c-7f1c-4d5e-8358-b1b59d3c5cf8}</Project>
+      <Name>QM.UMS.DMS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\QM.UMS.Models\QM.UMS.Models.csproj">
+      <Project>{ede81567-c85a-4ffd-a9c7-dea8f5c6f5ba}</Project>
+      <Name>QM.UMS.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\QM.UMS.Repository\QM.UMS.Repository.csproj">
+      <Project>{804c1730-c613-45d3-aead-dc5b7953694f}</Project>
+      <Name>QM.UMS.Repository</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
