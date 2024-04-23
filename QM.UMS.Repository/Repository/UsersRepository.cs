@@ -381,8 +381,9 @@ namespace QM.UMS.Repository.Repository
                     dbManager.Open();
                     string query = string.Empty;
                     query = QueryConfig.UserQuerySettings["GetUserDetailsByOrg"].ToString();
-                    dbManager.CreateParameters(1);
+                    dbManager.CreateParameters(2);
                     dbManager.AddParameters(0, "@OrgGUID", orgGuid);
+                    dbManager.AddParameters(1, "@App", Context.ApplicationType?.Code);
                     IDataReader dr = dbManager.ExecuteReader(CommandType.Text, query);
                     while (dr.Read())
                     {
