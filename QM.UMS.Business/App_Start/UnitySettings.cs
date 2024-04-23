@@ -94,8 +94,9 @@
 
                 container.RegisterType<ICommonHelperRepository, CommonHelperRepository>(new HierarchicalLifetimeManager());
 
-
                 container.RegisterType<IDocumentProcessRepository, DocumentProcessRepository>(new HierarchicalLifetimeManager());
+
+                container.RegisterType<IUserAppRepository, UserAppRepository>(new HierarchicalLifetimeManager());
                 config.DependencyResolver = new UnityDependencyResolver(container);
             }
             catch (Exception ex)

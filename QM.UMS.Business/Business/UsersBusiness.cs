@@ -48,6 +48,7 @@ namespace QM.UMS.Business.Business
         private readonly ICustomerBusiness _ICustomerBusiness;
         private readonly IDocumentProcessRepository _IDocumentProcessRepository;
         private readonly ICommonHelperRepository _ICommonHelperRepository;
+        private readonly IUserAppRepository _IUserAppRepository;
         DBModel companyInfo = new DBModel();
         #endregion
 
@@ -60,12 +61,13 @@ namespace QM.UMS.Business.Business
         /// <summary>Parameterized Constructor</summary>
         /// <param name="_prmIHttpClientBusiness">_prmIHttpClientBusiness</param>
         public UsersBusiness(IUsersRepository _iUsersRepository, ICustomerRepository _iCustomerRepository, CustomerBusiness _iCustomerBusiness, 
-                            IDocumentProcessRepository _IDocumentProcessRepository, ICommonHelperRepository iCommonHelperRepository)
+                            IDocumentProcessRepository _IDocumentProcessRepository, ICommonHelperRepository iCommonHelperRepository, IUserAppRepository _IUserAppRepository)
         {
             this._IUsersRepository = _iUsersRepository;
             this._ICustomerRepository = _iCustomerRepository;
             this._IDocumentProcessRepository = _IDocumentProcessRepository;
-            _ICommonHelperRepository = iCommonHelperRepository; 
+            _ICommonHelperRepository = iCommonHelperRepository;
+            this._IUserAppRepository = _IUserAppRepository;
         }
         public UsersBusiness()
         {
@@ -510,12 +512,7 @@ namespace QM.UMS.Business.Business
 
                 if(userId>0)
                 {
-                    //_ICommonHelperRepository.AdminAddUserMail(new EmailSenderModel()
-                    //{
-                    //    Name= user.FirstName,
-                    //    CompanyName= companyInfo.CompanyName,
-                    //    EmailId=user.Email
-                    //});
+                    _IUserAppRepository.MapUserApp(user.Email);
                 }
                 return userId;
             }

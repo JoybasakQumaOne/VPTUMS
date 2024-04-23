@@ -51,6 +51,7 @@
     <Compile Include="ActionModel.cs" />
     <Compile Include="AddressModel.cs" />
     <Compile Include="AdminLogsManager.cs" />
+    <Compile Include="AppModel.cs" />
     <Compile Include="AttributeGroup.cs" />
     <Compile Include="AttributeSection.cs" />
     <Compile Include="AttributeSectionModel.cs" />

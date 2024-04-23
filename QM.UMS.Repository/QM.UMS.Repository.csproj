@@ -74,6 +74,7 @@
     <Compile Include="IRepository\IPhoneRepository.cs" />
     <Compile Include="IRepository\IResourceRepository.cs" />
     <Compile Include="IRepository\IRoleRepository.cs" />
+    <Compile Include="IRepository\IUserAppRepository.cs" />
     <Compile Include="IRepository\IUserGroupRepository.cs" />
     <Compile Include="IRepository\IUsersRepository.cs" />
     <Compile Include="IRepository\IUserTypeRepository.cs" />
@@ -98,6 +99,7 @@
     <Compile Include="Repository\PhoneRepository.cs" />
     <Compile Include="Repository\ResourceRepository.cs" />
     <Compile Include="Repository\RoleRepository.cs" />
+    <Compile Include="Repository\UserAppRepository.cs" />
     <Compile Include="Repository\UserGroupRepository.cs" />
     <Compile Include="Repository\UsersRepository.cs" />
     <Compile Include="Repository\UserTypeRepository.cs" />
