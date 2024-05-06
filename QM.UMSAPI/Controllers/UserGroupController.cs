@@ -200,6 +200,32 @@ namespace QM.UMSAPI.Controllers
             }
         }
 
+        [HttpGet, ActionName("GetUserGroups")]
+        public IHttpActionResult GetUserGroups(string userId)
+        {
+            try
+            {
+                var data = this._IUserGroupBusiness.GetUserGroups(userId);
+                if (data != null)
+                {
+                    return this.Content(HttpStatusCode.OK, data);
+                }
+                return this.Content(HttpStatusCode.NotFound, APIResponse.CreateAPIResponse(ResponseType.NotFound.ToString(), "NOCONTENT"));
+            }
+            catch (RepositoryException RepEx)
+            {
+                return this.Content(HttpStatusCode.BadRequest, APIResponse.CreateAPIResponse(RepEx.ErrorMessage, RepEx.ErrorCode));
+            }
+            catch (BusinessException bEx)
+            {
+                return this.Content(HttpStatusCode.BadRequest, APIResponse.CreateAPIResponse(bEx.ErrorMessage, bEx.ErrorCode));
+            }
+            catch (Exception ex)
+            {
+                return this.Content(HttpStatusCode.BadRequest, ExceptionManager.HandleException(ex, ResponseType.Failure.ToString(), "GROUPFOUNDFAILED"));
+            }
+        }
+
         #endregion
 
         #region POST Methods
@@ -432,6 +458,68 @@ namespace QM.UMSAPI.Controllers
                 return this.Content(HttpStatusCode.BadRequest, ExceptionManager.HandleException(ex, ResponseType.Failure.ToString(), "ADDUSERTOGROUPFAILED"));
             }
         }
+
+
+        [HttpPut, ActionName("LinkGroup")]
+        public IHttpActionResult LinkGroup(string gId, string uId)
+        {
+            try
+            {
+                bool isInserted = this._IUserGroupBusiness.LinkUserGroup(gId, uId);
+                if (isInserted)
+                {
+                    return this.Content(HttpStatusCode.Created, APIResponse.CreateAPIResponse(ResponseType.Created.ToString(), "SUCCESS"));
+                }
+                return this.Content(HttpStatusCode.NotFound, APIResponse.CreateAPIResponse(ResponseType.NotCreated.ToString(), "INVALIDINPUT"));
+            }
+            catch (RepositoryException RepEx)
+            {
+                return this.Content(HttpStatusCode.BadRequest, APIResponse.CreateAPIResponse(RepEx.ErrorMessage, RepEx.ErrorCode));
+            }
+            catch (DuplicateException dex)
+            {
+                return this.Content(HttpStatusCode.BadRequest, APIResponse.CreateAPIResponse(ResponseType.Duplicate.ToString(), "DUPLICATE"));
+            }
+            catch (BusinessException bEx)
+            {
+                return this.Content(HttpStatusCode.BadRequest, APIResponse.CreateAPIResponse(bEx.Message));
+            }
+            catch (Exception ex)
+            {
+                return this.Content(HttpStatusCode.BadRequest, ExceptionManager.HandleException(ex, ResponseType.Failure.ToString(), "ADDUSERTOGROUPFAILED"));
+            }
+        }
+
+        [HttpPut, ActionName("DeLinkGroup")]
+        public IHttpActionResult DeLinkGroup(string gId, string uId)
+        {
+            try
+            {
+                bool isInserted = this._IUserGroupBusiness.DeLinkUserGroup(gId, uId);
+                if (isInserted)
+                {
+                    return this.Content(HttpStatusCode.Created, APIResponse.CreateAPIResponse(ResponseType.Created.ToString(), "SUCCESS"));
+                }
+                return this.Content(HttpStatusCode.NotFound, APIResponse.CreateAPIResponse(ResponseType.NotCreated.ToString(), "INVALIDINPUT"));
+            }
+            catch (RepositoryException RepEx)
+            {
+                return this.Content(HttpStatusCode.BadRequest, APIResponse.CreateAPIResponse(RepEx.ErrorMessage, RepEx.ErrorCode));
+            }
+            catch (DuplicateException dex)
+            {
+                return this.Content(HttpStatusCode.BadRequest, APIResponse.CreateAPIResponse(ResponseType.Duplicate.ToString(), "DUPLICATE"));
+            }
+            catch (BusinessException bEx)
+            {
+                return this.Content(HttpStatusCode.BadRequest, APIResponse.CreateAPIResponse(bEx.Message));
+            }
+            catch (Exception ex)
+            {
+                return this.Content(HttpStatusCode.BadRequest, ExceptionManager.HandleException(ex, ResponseType.Failure.ToString(), "ADDUSERTOGROUPFAILED"));
+            }
+        }
+
         #endregion
 
         #region PUT Methods

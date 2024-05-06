@@ -26,6 +26,7 @@ namespace QM.UMS.Repository.Repository
     using QM.UMS.Models;
     using CommonApplicationFramework.Caching;
     using Newtonsoft.Json;
+    using QM.UMS.Repository.Helper;
     #endregion
 
     /// -----------------------------------------------------------------
@@ -35,7 +36,7 @@ namespace QM.UMS.Repository.Repository
     ///   Author:       <Debabrata>                    
     /// -----------------------------------------------------------------
 
-    public class UserGroupRepository : IUserGroupRepository, IDisposable
+    public class UserGroupRepository : RequestHeader, IUserGroupRepository, IDisposable
     {
         #region Variable Declaration
         public string UserId { get; set; }
@@ -1041,6 +1042,111 @@ namespace QM.UMS.Repository.Repository
         public void Dispose()
         {
             GC.SuppressFinalize(this);
+        }
+
+        public object GetUserGroups(string userId)
+        {
+            object data = null;
+            try
+            {
+                using (dbManager = new DBManager())
+                {
+                    dbManager.GenerateConnectionString(ConnectionId);
+                    dbManager.Open();
+                    string query = QueryConfig.UserGroupQuerySettings["GetLinkedUserGroups"].ToString();
+                    dbManager.CreateParameters(2);
+                    dbManager.AddParameters(0, "@userId", userId);
+                    dbManager.AddParameters(1, "@App", Context.ApplicationType?.Code);
+                    DataTable dt = new DataTable();
+                    dt.Load(dbManager.ExecuteReader(CommandType.Text, query));
+                    if (dt.Rows.Count > 0)
+                    {
+                        data = dt.AsEnumerable().Select(n => new {
+                            Id = ConvertData.ToInt(n["Id"]),
+                            Name = ConvertData.ToString(n["Name"]),
+                            Description = ConvertData.ToString(n["Description"]),
+                            Code = ConvertData.ToString(n["Code"]),
+                            Users = ConvertData.ToString(n["UserCount"]),
+                            Guid = ConvertData.ToString(n["Guid"]),
+                            Linked = !string.IsNullOrEmpty(ConvertData.ToString(n["LinkedGroup"])) ? ConvertData.ToInt(n["LinkedGroup"]) > 0 ? true : false : false
+                        }).ToList();
+                    }
+                }
+            }
+            catch (SqlException sqlEx)
+            {
+                LogManager.Log(sqlEx);
+                throw new RepositoryException("USERGROUPFOUNDFAILED", MessageConfig.MessageSettings["USERGROUPFOUNDFAILED"].ToString(), sqlEx.StackTrace);
+            }
+            catch (Exception ex)
+            {
+                LogManager.Log(ex);
+                throw new RepositoryException("USERGROUPFOUNDFAILED", MessageConfig.MessageSettings["USERGROUPFOUNDFAILED"].ToString(), ex.StackTrace);
+            }
+            return data;
+        }
+
+        public bool LinkUserGroup(string gId, string uId)
+        {
+            try
+            {
+                using (dbManager = new DBManager())
+                {
+                    dbManager.GenerateConnectionString(ConnectionId);
+                    dbManager.Open();
+                    string query = string.Empty;
+                    dbManager.CreateParameters(3);
+                    dbManager.AddParameters(0, "@UserId", uId);
+                    dbManager.AddParameters(1, "@GroupId", gId);
+                    dbManager.AddParameters(2, "@CreatedBy", Context.UserId);
+                    query = QueryConfig.UserGroupQuerySettings["AddUserToGroupCode"].ToString();
+                    dbManager.ExecuteNonQuery(CommandType.Text, query);
+                }
+                return true;
+            }
+            catch (SqlException sqlEx)
+            {
+                LogManager.Log(sqlEx);
+                throw new RepositoryException("ADDUSERTOGROUPFAILED", MessageConfig.MessageSettings["ADDUSERTOGROUPFAILED"].ToString(), sqlEx.StackTrace);
+            }
+            catch (Exception ex)
+            {
+                LogManager.Log(ex);
+                throw new RepositoryException("ADDUSERTOGROUPFAILED", MessageConfig.MessageSettings["ADDUSERTOGROUPFAILED"].ToString(), ex.StackTrace);
+            }
+        }
+
+        public bool DelinkUserGroup(string gId, string uId)
+        {
+            bool status = false;
+            try
+            {
+                using (dbManager = new DBManager())
+                {
+                    dbManager.GenerateConnectionString(ConnectionId);
+                    dbManager.Open();
+                    string query = string.Empty;
+                    dbManager.CreateParameters(2);
+                    dbManager.AddParameters(0, "@UserId", uId);
+                    dbManager.AddParameters(1, "@GroupId", gId);
+                    query = QueryConfig.UserGroupQuerySettings["RemoveUserFromGroupCode"].ToString();
+                    if (dbManager.ExecuteNonQuery(CommandType.Text, query) > 0)
+                    {
+                        status = true;
+                    }
+                }
+                return status;
+            }
+            catch (SqlException sqlEx)
+            {
+                LogManager.Log(sqlEx);
+                throw new RepositoryException("ADDUSERTOGROUPFAILED", MessageConfig.MessageSettings["ADDUSERTOGROUPFAILED"].ToString(), sqlEx.StackTrace);
+            }
+            catch (Exception ex)
+            {
+                LogManager.Log(ex);
+                throw new RepositoryException("ADDUSERTOGROUPFAILED", MessageConfig.MessageSettings["ADDUSERTOGROUPFAILED"].ToString(), ex.StackTrace);
+            }
         }
     }
 }

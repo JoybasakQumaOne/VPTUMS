@@ -107,11 +107,11 @@ namespace QM.UMS.Repository.Repository
                 {
                     stringlist = new List<string>();
                     dbManager.ConnectionString = dbManager.GenerateConnectionString(this.ConnectionId);
-                    LogManager.Log("UserId "+Context?.UserId.ToString());
                     dbManager.Open();
                     string query = QueryConfig.ResourceQuerySettings["GetResourceByUserId"].ToString();
-                    dbManager.CreateParameters(1);
+                    dbManager.CreateParameters(2);
                     dbManager.AddParameters(0, "@UserId", uid);
+                    dbManager.AddParameters(1, "@App", Context.ApplicationType?.Code);
                     IDataReader dr = dbManager.ExecuteReader(CommandType.Text, query);
                     while (dr.Read())
                     {

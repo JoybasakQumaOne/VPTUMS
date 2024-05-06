@@ -42,6 +42,10 @@ namespace QM.UMS.Business.Business
         {
             this._IUserGroupRepository = _iUserGroupRepository;
         }
+
+        public UserGroupBusiness()
+        {
+        }
         #endregion
 
         #region Properties
@@ -234,6 +238,21 @@ namespace QM.UMS.Business.Business
         public void Dispose()
         {
             GC.SuppressFinalize(this);
+        }
+
+        public dynamic GetUserGroups(string userId)
+        {
+            return _IUserGroupRepository.GetUserGroups(userId);
+        }
+
+        public bool LinkUserGroup(string gId, string uId)
+        {
+            return _IUserGroupRepository.LinkUserGroup(gId, uId);
+        }
+
+        public bool DeLinkUserGroup(string gId, string uId)
+        {
+            return _IUserGroupRepository.LinkUserGroup(gId, uId);
         }
     }
 }

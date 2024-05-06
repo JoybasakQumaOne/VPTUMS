@@ -46,7 +46,10 @@ namespace QM.UMS.Repository.IRepository
         int GetRolelinkedtoGroup(string code, int roleId, int groupId);
 
         int GetUserLinkedtoGroup(string code, int userId, int groupId);
+        dynamic GetUserGroups(string userId);
 
+        bool LinkUserGroup(string gId, string uId);
+        bool DelinkUserGroup(string gId, string uId);
         List<Item> GetAllLinkedAttribute(int groupId);
         #endregion
 

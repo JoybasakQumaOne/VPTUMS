@@ -1056,14 +1056,7 @@ namespace QM.UMS.Repository.Repository
                 dbManager.AddParameters(0, "@Email", email);
                 dbManager.AddParameters(1, "@CompanyId", CompanyId);
                 int returnId = Convert.ToInt32(dbManager.ExecuteScalar(CommandType.Text, query));
-                if (returnId > 0)
-                {
-                    return true;
-                }
-                else
-                {
-                    throw new RepositoryException(MessageConfig.MessageSettings["USEREXISTS"].ToString());
-                }
+                return true;
             }
         }
         #endregion

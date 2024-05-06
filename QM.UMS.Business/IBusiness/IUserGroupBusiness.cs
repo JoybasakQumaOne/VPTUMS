@@ -42,6 +42,10 @@ namespace QM.UMS.Business.IBusiness
 
         List<Item> GetAllLinkedAttribute(int groupId);
 
+        dynamic GetUserGroups(string userId);
+        bool LinkUserGroup(string gId, string uId);
+        bool DeLinkUserGroup(string gId, string uId);
+
         #endregion
 
         #region POST Methods

@@ -80,6 +80,7 @@
     <Compile Include="PermissionModel.cs" />
     <Compile Include="PhoneTypeModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RegistrationMailData.cs" />
     <Compile Include="ResourceModel.cs" />
     <Compile Include="RoleModel.cs" />
     <Compile Include="StateProvinceModel.cs" />

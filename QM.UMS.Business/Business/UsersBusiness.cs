@@ -460,20 +460,18 @@ namespace QM.UMS.Business.Business
                 user.IsAdmin = true;
                 /*Get the company info to which user want to creates the user*/
                 CompanyModuleModel companyInfo = this._IUsersRepository.GetCompanyModuleInfo();
-                if (_IUsersRepository.IfUserExistsInApplicationDb(user.Email) > 0)
+                userId = _IUsersRepository.IfUserExistsInApplicationDb(user.Email);
+                if (userId> 0)
                 {
-                    _IUsersRepository.LinkUserToCompany(user.Email, user.Organisations.FirstOrDefault().ToString());
-                    string controlUserCode = _IUsersRepository.IfUserExistsInControlDb(user.Email);
-                    int isUserCreatedInAppDB= _IUsersRepository.CreateApplicationUser(user, controlUserCode, companyInfo.Id);
-                    if (isUserCreatedInAppDB > 0)
+                    _ICommonHelperRepository.TriggerExistsRegistrationEmail(new RegistrationMailData()
                     {
-                        //SendRegistrationEmail(user, companyInfo, "CustomerNewRegistration");
-                        userId= isUserCreatedInAppDB;
-                    }
-                    else
-                    {
-                        userId= isUserCreatedInAppDB;
-                    }
+                        Email = user.Email,
+                        FirstName = user.FirstName,
+                        LastName = user.LastName,
+                        Name = user.FirstName + " " + user.LastName,
+                        CompanyName = companyInfo.CompanyName,
+                        ProductCode = Context.ApplicationType?.Code
+                    });
                     /*If user exists in Application DB then Break the operation and throw duplicate exception*/
                     //throw new DuplicateException("DUPLICATE ITEM", "DUPLICATE", "DUPLICATE");
                 }
@@ -484,29 +482,36 @@ namespace QM.UMS.Business.Business
                     if (!string.IsNullOrEmpty(controlUserCode))
                     {
                         int isUserCreatedInAppDB = 0;
-                        if (companyInfo.AuthMode.Trim().ToUpper().Equals(AuthMode.AD.ToString()))
-                        {
-                            //user = GetActiveDirectoryUserDetails(user);
-                            //isUserCreatedInAppDB = _IUsersRepository.CreateApplicationUser(user, controlUserCode, companyInfo.Id);
-                        }
-                        else
-                        {
-                            isUserCreatedInAppDB = _IUsersRepository.CreateApplicationUser(user, controlUserCode, companyInfo.Id);
-                        }
-
+                        isUserCreatedInAppDB = _IUsersRepository.CreateApplicationUser(user, controlUserCode, companyInfo.Id);
                         if (isUserCreatedInAppDB > 0)
                         {
-                            //SendRegistrationEmail(user, companyInfo, "CustomerNewRegistration");
-                            userId= isUserCreatedInAppDB;
-                        }
-                        else
-                        {
-                            userId= isUserCreatedInAppDB;
+                            _ICommonHelperRepository.TriggerExistsRegistrationEmail(new RegistrationMailData()
+                            {
+                                Email = user.Email,
+                                FirstName = user.FirstName,
+                                LastName = user.LastName,
+                                Name = user.FirstName + " " + user.LastName,
+                                CompanyName = companyInfo.CompanyName,
+                                ProductCode = Context.ApplicationType?.Code
+                            });
+                            userId = isUserCreatedInAppDB;
                         }
                     }
                     else
                     {
                         userId= CreateControlUser(companyInfo, user);
+                        if(userId>0)
+                        {
+                            _ICommonHelperRepository.TriggerNewRegistrationEmail(new RegistrationMailData()
+                            {
+                                Password = user.Password,
+                                Email = user.Email,
+                                FirstName = user.FirstName,
+                                LastName = user.LastName,
+                                Name = user.FirstName + " " + user.LastName,
+                                ProductCode=Context.ApplicationType?.Code
+                            });
+                        }
                     }
                 }
 
@@ -922,6 +927,7 @@ namespace QM.UMS.Business.Business
                     if (this._IUsersRepository.ResetPassword(userModel))
                     {
 
+                        _ICommonHelperRepository.TriggerAdminResetMail(changePassword.UserName, changePassword.NewPassword);
                         //EmailSenderModel email = new EmailSenderModel();
                         //email.Id = userModel.Id;
                         //email.Name = userModel.Name;
