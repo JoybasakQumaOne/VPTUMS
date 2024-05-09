@@ -252,7 +252,7 @@ namespace QM.UMS.Business.Business
 
         public bool DeLinkUserGroup(string gId, string uId)
         {
-            return _IUserGroupRepository.LinkUserGroup(gId, uId);
+            return _IUserGroupRepository.DelinkUserGroup(gId, uId);
         }
     }
 }

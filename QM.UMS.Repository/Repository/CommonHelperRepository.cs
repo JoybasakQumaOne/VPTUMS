@@ -461,169 +461,168 @@ namespace QM.UMS.Repository.Repository
 
 
 
-        public void TriggerNewRegistrationEmail(RegistrationMailData data)
-        {
-            string responseData = null;
-            try
-            {
-                using (HttpClient con_httpClient = new HttpClient(new HttpClientHandler()))
-                {
-                    con_httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                    con_httpClient.DefaultRequestHeaders.Add("ModuleCode", Code);
-                    con_httpClient.DefaultRequestHeaders.Add("RequestId", RequestId);
-                    con_httpClient.DefaultRequestHeaders.Add("ConnectionId", ConnectionId);
-                    HttpRequestMessage request = new HttpRequestMessage(new HttpMethod("POST"), new Uri(Environments.Configurations.Settings.Find(x => x.Key.ToString().Equals("SendMailEndPoint")).Value.ToString() + "TaskMail/TriggerNewRegistrationMail"));
-                    request.Content = new StringContent(JsonConvert.SerializeObject(data));
-                    request.Content.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json");
-                    var response = con_httpClient.SendAsync(request).Result;
-                    if (response.IsSuccessStatusCode)
-                    {
-                        responseData = response.Content.ReadAsStringAsync().Result;
-                    }
-                    else
-                    {
-                        responseData = "false";
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                LogManager.Log(ex.InnerException.ToString(), ex, Code);
-                throw new RepositoryException("APILAYERERROR", MessageConfig.MessageSettings["APILAYERERROR"].ToString(), MessageConfig.MessageSettings["APILAYERERROR"].ToString());
-            }
-        }
+        //public void TriggerNewRegistrationEmail(RegistrationMailData data)
+        //{
+        //    string responseData = null;
+        //    try
+        //    {
+        //        using (HttpClient con_httpClient = new HttpClient(new HttpClientHandler()))
+        //        {
+        //            con_httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+        //            con_httpClient.DefaultRequestHeaders.Add("ModuleCode", Code);
+        //            con_httpClient.DefaultRequestHeaders.Add("RequestId", RequestId);
+        //            con_httpClient.DefaultRequestHeaders.Add("ConnectionId", ConnectionId);
+        //            HttpRequestMessage request = new HttpRequestMessage(new HttpMethod("POST"), new Uri(Environments.Configurations.Settings.Find(x => x.Key.ToString().Equals("SendMailEndPoint")).Value.ToString() + "TaskMail/TriggerNewRegistrationMail"));
+        //            request.Content = new StringContent(JsonConvert.SerializeObject(data));
+        //            request.Content.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json");
+        //            var response = con_httpClient.SendAsync(request).Result;
+        //            if (response.IsSuccessStatusCode)
+        //            {
+        //                responseData = response.Content.ReadAsStringAsync().Result;
+        //            }
+        //            else
+        //            {
+        //                responseData = "false";
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        LogManager.Log(ex.InnerException.ToString(), ex, Code);
+        //        throw new RepositoryException("APILAYERERROR", MessageConfig.MessageSettings["APILAYERERROR"].ToString(), MessageConfig.MessageSettings["APILAYERERROR"].ToString());
+        //    }
+        //}
 
-        public void TriggerExistsRegistrationEmail(RegistrationMailData data)
-        {
-            string responseData = null;
-            try
-            {
-                using (HttpClient con_httpClient = new HttpClient(new HttpClientHandler()))
-                {
-                    con_httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                    con_httpClient.DefaultRequestHeaders.Add("ModuleCode", Code);
-                    con_httpClient.DefaultRequestHeaders.Add("RequestId", RequestId);
-                    con_httpClient.DefaultRequestHeaders.Add("ConnectionId", ConnectionId);
-                    HttpRequestMessage request = new HttpRequestMessage(new HttpMethod("POST"), new Uri(Environments.Configurations.Settings.Find(x => x.Key.ToString().Equals("SendMailEndPoint")).Value.ToString() + "TaskMail/TriggerExistingRegistrationMail"));
-                    request.Content = new StringContent(JsonConvert.SerializeObject(data));
-                    request.Content.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json");
-                    var response = con_httpClient.SendAsync(request).Result;
-                    if (response.IsSuccessStatusCode)
-                    {
-                        responseData = response.Content.ReadAsStringAsync().Result;
-                    }
-                    else
-                    {
-                        responseData = "false";
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                LogManager.Log(ex.InnerException.ToString(), ex, Code);
-                throw new RepositoryException("APILAYERERROR", MessageConfig.MessageSettings["APILAYERERROR"].ToString(), MessageConfig.MessageSettings["APILAYERERROR"].ToString());
-            }
-        }
+        //public void TriggerExistsRegistrationEmail(RegistrationMailData data)
+        //{
+        //    string responseData = null;
+        //    try
+        //    {
+        //        using (HttpClient con_httpClient = new HttpClient(new HttpClientHandler()))
+        //        {
+        //            con_httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+        //            con_httpClient.DefaultRequestHeaders.Add("ModuleCode", Code);
+        //            con_httpClient.DefaultRequestHeaders.Add("RequestId", RequestId);
+        //            con_httpClient.DefaultRequestHeaders.Add("ConnectionId", ConnectionId);
+        //            HttpRequestMessage request = new HttpRequestMessage(new HttpMethod("POST"), new Uri(Environments.Configurations.Settings.Find(x => x.Key.ToString().Equals("SendMailEndPoint")).Value.ToString() + "TaskMail/TriggerExistingRegistrationMail"));
+        //            request.Content = new StringContent(JsonConvert.SerializeObject(data));
+        //            request.Content.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json");
+        //            var response = con_httpClient.SendAsync(request).Result;
+        //            if (response.IsSuccessStatusCode)
+        //            {
+        //                responseData = response.Content.ReadAsStringAsync().Result;
+        //            }
+        //            else
+        //            {
+        //                responseData = "false";
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        LogManager.Log(ex.InnerException.ToString(), ex, Code);
+        //        throw new RepositoryException("APILAYERERROR", MessageConfig.MessageSettings["APILAYERERROR"].ToString(), MessageConfig.MessageSettings["APILAYERERROR"].ToString());
+        //    }
+        //}
 
-        public void TriggerChangePasswordMail(string email)
-        {
-            string responseData = null;
-            try
-            {
-                using (HttpClient con_httpClient = new HttpClient(new HttpClientHandler()))
-                {
-                    con_httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                    con_httpClient.DefaultRequestHeaders.Add("ModuleCode", Code);
-                    con_httpClient.DefaultRequestHeaders.Add("RequestId", RequestId);
-                    con_httpClient.DefaultRequestHeaders.Add("ConnectionId", ConnectionId);
-                    HttpRequestMessage request = new HttpRequestMessage(new HttpMethod("POST"), new Uri(Environments.Configurations.Settings.Find(x => x.Key.ToString().Equals("SendMailEndPoint")).Value.ToString() + "TaskMail/TriggerChangePasswordEmail?mail=" + email));
-                    request.Content = new StringContent(String.Empty);
-                    request.Content.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json");
-                    var response = con_httpClient.SendAsync(request).Result;
-                    if (response.IsSuccessStatusCode)
-                    {
-                        responseData = response.Content.ReadAsStringAsync().Result;
-                    }
-                    else
-                    {
-                        responseData = "false";
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                LogManager.Log(ex.InnerException.ToString(), ex, Code);
-                throw new RepositoryException("APILAYERERROR", MessageConfig.MessageSettings["APILAYERERROR"].ToString(), MessageConfig.MessageSettings["APILAYERERROR"].ToString());
-            }
-        }
+        //public void TriggerChangePasswordMail(string email)
+        //{
+        //    string responseData = null;
+        //    try
+        //    {
+        //        using (HttpClient con_httpClient = new HttpClient(new HttpClientHandler()))
+        //        {
+        //            con_httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+        //            con_httpClient.DefaultRequestHeaders.Add("ModuleCode", Code);
+        //            con_httpClient.DefaultRequestHeaders.Add("RequestId", RequestId);
+        //            con_httpClient.DefaultRequestHeaders.Add("ConnectionId", ConnectionId);
+        //            HttpRequestMessage request = new HttpRequestMessage(new HttpMethod("POST"), new Uri(Environments.Configurations.Settings.Find(x => x.Key.ToString().Equals("SendMailEndPoint")).Value.ToString() + "TaskMail/TriggerChangePasswordEmail?mail=" + email));
+        //            request.Content = new StringContent(String.Empty);
+        //            request.Content.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json");
+        //            var response = con_httpClient.SendAsync(request).Result;
+        //            if (response.IsSuccessStatusCode)
+        //            {
+        //                responseData = response.Content.ReadAsStringAsync().Result;
+        //            }
+        //            else
+        //            {
+        //                responseData = "false";
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        LogManager.Log(ex.InnerException.ToString(), ex, Code);
+        //        throw new RepositoryException("APILAYERERROR", MessageConfig.MessageSettings["APILAYERERROR"].ToString(), MessageConfig.MessageSettings["APILAYERERROR"].ToString());
+        //    }
+        //}
 
-        public void TriggerAdminResetMail(string email, string password)
-        {
-            string responseData = null;
-            try
-            {
-                using (HttpClient con_httpClient = new HttpClient(new HttpClientHandler()))
-                {
-                    con_httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                    con_httpClient.DefaultRequestHeaders.Add("ModuleCode", Code);
-                    con_httpClient.DefaultRequestHeaders.Add("RequestId", RequestId);
-                    con_httpClient.DefaultRequestHeaders.Add("ConnectionId", ConnectionId);
-                    HttpRequestMessage request = new HttpRequestMessage(new HttpMethod("POST"), new Uri(Environments.Configurations.Settings.Find(x => x.Key.ToString().Equals("SendMailEndPoint")).Value.ToString() + "TaskMail/TriggerAdminResetMail"));
-                    request.Content = new StringContent(JsonConvert.SerializeObject(new RegistrationMailData()
-                    {
-                        Email = email,
-                        Password = password
-                    }));
-                    request.Content.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json");
-                    var response = con_httpClient.SendAsync(request).Result;
-                    if (response.IsSuccessStatusCode)
-                    {
-                        responseData = response.Content.ReadAsStringAsync().Result;
-                    }
-                    else
-                    {
-                        responseData = "false";
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                LogManager.Log(ex.InnerException.ToString(), ex, Code);
-                throw new RepositoryException("APILAYERERROR", MessageConfig.MessageSettings["APILAYERERROR"].ToString(), MessageConfig.MessageSettings["APILAYERERROR"].ToString());
-            }
-        }
+        //public void TriggerAdminResetMail(string email, string password)
+        //{
+        //    string responseData = null;
+        //    try
+        //    {
+        //        using (HttpClient con_httpClient = new HttpClient(new HttpClientHandler()))
+        //        {
+        //            con_httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+        //            con_httpClient.DefaultRequestHeaders.Add("ModuleCode", Code);
+        //            con_httpClient.DefaultRequestHeaders.Add("RequestId", RequestId);
+        //            con_httpClient.DefaultRequestHeaders.Add("ConnectionId", ConnectionId);
+        //            HttpRequestMessage request = new HttpRequestMessage(new HttpMethod("POST"), new Uri(Environments.Configurations.Settings.Find(x => x.Key.ToString().Equals("SendMailEndPoint")).Value.ToString() + "TaskMail/TriggerAdminResetMail"));
+        //            request.Content = new StringContent(JsonConvert.SerializeObject(new RegistrationMailData()
+        //            {
+        //                Email = email,
+        //                Password = password
+        //            }));
+        //            request.Content.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json");
+        //            var response = con_httpClient.SendAsync(request).Result;
+        //            if (response.IsSuccessStatusCode)
+        //            {
+        //                responseData = response.Content.ReadAsStringAsync().Result;
+        //            }
+        //            else
+        //            {
+        //                responseData = "false";
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        LogManager.Log(ex.InnerException.ToString(), ex, Code);
+        //        throw new RepositoryException("APILAYERERROR", MessageConfig.MessageSettings["APILAYERERROR"].ToString(), MessageConfig.MessageSettings["APILAYERERROR"].ToString());
+        //    }
+        //}
 
-
-        public void TriggerForgotPasswordMail(string email)
-        {
-            string responseData = null;
-            try
-            {
-                using (HttpClient con_httpClient = new HttpClient(new HttpClientHandler()))
-                {
-                    con_httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                    con_httpClient.DefaultRequestHeaders.Add("ModuleCode", Code);
-                    con_httpClient.DefaultRequestHeaders.Add("RequestId", RequestId);
-                    con_httpClient.DefaultRequestHeaders.Add("ConnectionId", ConnectionId);
-                    HttpRequestMessage request = new HttpRequestMessage(new HttpMethod("POST"), new Uri(Environments.Configurations.Settings.Find(x => x.Key.ToString().Equals("SendMailEndPoint")).Value.ToString() + "TaskMail/TriggerForgotPasswordMail?mail=" + email));
-                    request.Content = new StringContent(String.Empty);
-                    request.Content.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json");
-                    var response = con_httpClient.SendAsync(request).Result;
-                    if (response.IsSuccessStatusCode)
-                    {
-                        responseData = response.Content.ReadAsStringAsync().Result;
-                    }
-                    else
-                    {
-                        responseData = "false";
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                LogManager.Log(ex.InnerException.ToString(), ex, Code);
-                throw new RepositoryException("APILAYERERROR", MessageConfig.MessageSettings["APILAYERERROR"].ToString(), MessageConfig.MessageSettings["APILAYERERROR"].ToString());
-            }
-        }
+        //public void TriggerForgotPasswordMail(string email)
+        //{
+        //    string responseData = null;
+        //    try
+        //    {
+        //        using (HttpClient con_httpClient = new HttpClient(new HttpClientHandler()))
+        //        {
+        //            con_httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+        //            con_httpClient.DefaultRequestHeaders.Add("ModuleCode", Code);
+        //            con_httpClient.DefaultRequestHeaders.Add("RequestId", RequestId);
+        //            con_httpClient.DefaultRequestHeaders.Add("ConnectionId", ConnectionId);
+        //            HttpRequestMessage request = new HttpRequestMessage(new HttpMethod("POST"), new Uri(Environments.Configurations.Settings.Find(x => x.Key.ToString().Equals("SendMailEndPoint")).Value.ToString() + "TaskMail/TriggerForgotPasswordMail?mail=" + email));
+        //            request.Content = new StringContent(String.Empty);
+        //            request.Content.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json");
+        //            var response = con_httpClient.SendAsync(request).Result;
+        //            if (response.IsSuccessStatusCode)
+        //            {
+        //                responseData = response.Content.ReadAsStringAsync().Result;
+        //            }
+        //            else
+        //            {
+        //                responseData = "false";
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        LogManager.Log(ex.InnerException.ToString(), ex, Code);
+        //        throw new RepositoryException("APILAYERERROR", MessageConfig.MessageSettings["APILAYERERROR"].ToString(), MessageConfig.MessageSettings["APILAYERERROR"].ToString());
+        //    }
+        //}
     }
 }

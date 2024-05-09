@@ -65,6 +65,7 @@
     <Compile Include="IRepository\IDepartmentRepository.cs" />
     <Compile Include="IRepository\IDesignationRepository.cs" />
     <Compile Include="IRepository\IDocumentProcessRepository.cs" />
+    <Compile Include="IRepository\IEmailHandler.cs" />
     <Compile Include="IRepository\IInstanceRepository.cs" />
     <Compile Include="IRepository\IMasterRepository.cs" />
     <Compile Include="IRepository\IModuleRepository.cs" />
@@ -90,6 +91,7 @@
     <Compile Include="Repository\DepartmentRepository.cs" />
     <Compile Include="Repository\DesignationRepository.cs" />
     <Compile Include="Repository\DocumentProcessRepository.cs" />
+    <Compile Include="Repository\EmailHandler.cs" />
     <Compile Include="Repository\InstanceRepository.cs" />
     <Compile Include="Repository\MasterRepository.cs" />
     <Compile Include="Repository\ModuleRepository.cs" />

@@ -49,6 +49,7 @@ namespace QM.UMS.Business.Business
         private readonly IDocumentProcessRepository _IDocumentProcessRepository;
         private readonly ICommonHelperRepository _ICommonHelperRepository;
         private readonly IUserAppRepository _IUserAppRepository;
+        private readonly IEmailHandler _IEmailHandler;
         DBModel companyInfo = new DBModel();
         #endregion
 
@@ -61,13 +62,15 @@ namespace QM.UMS.Business.Business
         /// <summary>Parameterized Constructor</summary>
         /// <param name="_prmIHttpClientBusiness">_prmIHttpClientBusiness</param>
         public UsersBusiness(IUsersRepository _iUsersRepository, ICustomerRepository _iCustomerRepository, CustomerBusiness _iCustomerBusiness, 
-                            IDocumentProcessRepository _IDocumentProcessRepository, ICommonHelperRepository iCommonHelperRepository, IUserAppRepository _IUserAppRepository)
+                            IDocumentProcessRepository _IDocumentProcessRepository, ICommonHelperRepository iCommonHelperRepository,
+                            IUserAppRepository _IUserAppRepository, IEmailHandler iEmailHandler)
         {
             this._IUsersRepository = _iUsersRepository;
             this._ICustomerRepository = _iCustomerRepository;
             this._IDocumentProcessRepository = _IDocumentProcessRepository;
             _ICommonHelperRepository = iCommonHelperRepository;
             this._IUserAppRepository = _IUserAppRepository;
+            _IEmailHandler = iEmailHandler;
         }
         public UsersBusiness()
         {
@@ -455,6 +458,7 @@ namespace QM.UMS.Business.Business
         public int AddAdminUser(UserProfileModel user)
         {
             int userId = 0;
+            string passWord = user.Password;
             try
             {
                 user.IsAdmin = true;
@@ -463,7 +467,7 @@ namespace QM.UMS.Business.Business
                 userId = _IUsersRepository.IfUserExistsInApplicationDb(user.Email);
                 if (userId> 0)
                 {
-                    _ICommonHelperRepository.TriggerExistsRegistrationEmail(new RegistrationMailData()
+                    _IEmailHandler.TriggerExistsRegistrationEmail(new RegistrationMailData()
                     {
                         Email = user.Email,
                         FirstName = user.FirstName,
@@ -485,7 +489,7 @@ namespace QM.UMS.Business.Business
                         isUserCreatedInAppDB = _IUsersRepository.CreateApplicationUser(user, controlUserCode, companyInfo.Id);
                         if (isUserCreatedInAppDB > 0)
                         {
-                            _ICommonHelperRepository.TriggerExistsRegistrationEmail(new RegistrationMailData()
+                            _IEmailHandler.TriggerExistsRegistrationEmail(new RegistrationMailData()
                             {
                                 Email = user.Email,
                                 FirstName = user.FirstName,
@@ -502,9 +506,9 @@ namespace QM.UMS.Business.Business
                         userId= CreateControlUser(companyInfo, user);
                         if(userId>0)
                         {
-                            _ICommonHelperRepository.TriggerNewRegistrationEmail(new RegistrationMailData()
+                            _IEmailHandler.TriggerNewRegistrationEmail(new RegistrationMailData()
                             {
-                                Password = user.Password,
+                                Password = passWord,
                                 Email = user.Email,
                                 FirstName = user.FirstName,
                                 LastName = user.LastName,
@@ -927,16 +931,12 @@ namespace QM.UMS.Business.Business
                     if (this._IUsersRepository.ResetPassword(userModel))
                     {
 
-                        _ICommonHelperRepository.TriggerAdminResetMail(changePassword.UserName, changePassword.NewPassword);
-                        //EmailSenderModel email = new EmailSenderModel();
-                        //email.Id = userModel.Id;
-                        //email.Name = userModel.Name;
-                        //email.FirstName = userModel.FirstName;
-                        //email.Password = changePassword.NewPassword;
-                        //email.EmailId = userModel.Email;
-                        //email.IsFirstLogin = true;
-                        //this._ICommonHelperRepository.AdminPasswordResetMail(email);
-                        //EmailSender.SendPasswordReminderEmail(email, MessageConfig.MessageSettings["CHANGEPASSWORD"], "");
+                        _IEmailHandler.TriggerAdminResetMail(new RegistrationMailData()
+                        {
+                            Email= userModel.Email, 
+                            Password= changePassword.NewPassword,
+                            ProductCode=Context.ApplicationType.Code
+                        });
                         flag = true;
                     }
                 }

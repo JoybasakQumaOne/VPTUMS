@@ -97,6 +97,9 @@
                 container.RegisterType<IDocumentProcessRepository, DocumentProcessRepository>(new HierarchicalLifetimeManager());
 
                 container.RegisterType<IUserAppRepository, UserAppRepository>(new HierarchicalLifetimeManager());
+
+                container.RegisterType<IEmailHandler, EmailHandler>(new HierarchicalLifetimeManager());
+
                 config.DependencyResolver = new UnityDependencyResolver(container);
             }
             catch (Exception ex)

@@ -20,10 +20,10 @@ namespace QM.UMS.Repository.IRepository
         void OrganizationRegistrationMail(EmailSenderModel user);
         void OrganizationRegistrationWithExistingUserMail(EmailSenderModel user);
 
-        void TriggerNewRegistrationEmail(RegistrationMailData data);
-        void TriggerExistsRegistrationEmail(RegistrationMailData data);
-        void TriggerForgotPasswordMail(string email);
-        void TriggerChangePasswordMail(string email);
-        void TriggerAdminResetMail(string email, string password);
+        //void TriggerNewRegistrationEmail(RegistrationMailData data);
+        //void TriggerExistsRegistrationEmail(RegistrationMailData data);
+        //void TriggerForgotPasswordMail(string email);
+        //void TriggerChangePasswordMail(string email);
+        //void TriggerAdminResetMail(string email, string password);
     }
 }
