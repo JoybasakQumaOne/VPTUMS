@@ -179,8 +179,15 @@ namespace QM.UMS.Repository.Repository
                     txtMsg = txtMsg.Replace("[NAME]", rdm.Name);
                     txtMsg = txtMsg.Replace("[PASSWORD]", rdm.Password);
                     txtMsg = txtMsg.Replace("[COMPANYNAME]", rdm.CompanyName);
-                    txtMsg = txtMsg.Replace("[LoginURL]", Environments.Configurations.Settings.Find(x => x.Key.ToString().Equals("LoginURL")).Value);
 
+                    if (rdm.ProductCode == "VPT")
+                    {
+                        txtMsg = txtMsg.Replace("[LoginURL]", Environments.Configurations.Settings.Find(x => x.Key.ToString().Equals("AdminLoginURL")).Value);
+                    }
+                    else
+                    {
+                        txtMsg = txtMsg.Replace("[LoginURL]", Environments.Configurations.Settings.Find(x => x.Key.ToString().Equals("LoginURL")).Value);
+                    }
 
                     mail.To.Add(new MailAddress(rdm.Email));
                     mail.Body = txtMsg;
@@ -314,7 +321,17 @@ namespace QM.UMS.Repository.Repository
                     txtMsg = txtMsg.Replace("[NAME]", rdm.Name);
                     txtMsg = txtMsg.Replace("[PASSWORD]", rdm.Password);
                     txtMsg = txtMsg.Replace("[EMAIL]", rdm.Email);
-                    txtMsg = txtMsg.Replace("[LoginURL]", Environments.Configurations.Settings.Find(x => x.Key.ToString().Equals("LoginURL")).Value);
+
+                    if (rdm.ProductCode == "VPT")
+                    {
+                        txtMsg = txtMsg.Replace("[LoginURL]", Environments.Configurations.Settings.Find(x => x.Key.ToString().Equals("AdminLoginURL")).Value);
+                    }
+                    else
+                    {
+                        txtMsg = txtMsg.Replace("[LoginURL]", Environments.Configurations.Settings.Find(x => x.Key.ToString().Equals("LoginURL")).Value);
+                    }
+
+
 
 
                     mail.To.Add(new MailAddress(rdm.Email));
