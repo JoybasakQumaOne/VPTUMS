@@ -800,17 +800,16 @@ namespace QM.UMS.Business.Business
                         userModel.ExpiresOn = usersDetail.ExpiresOn.AddDays(passwordExpiry);
                         if( this._IUsersRepository.ResetPassword(userModel))
                         {
-                            email = new EmailSenderModel();
-                            email.Id = usersDetail.Id;
-                            email.Name = usersDetail.Name;
-                            email.FirstName = usersDetail.FirstName;
-                            email.Password = usersDetail.Salt;
-                            email.EmailId = usersDetail.Email;
-                            email.CompanyCode = userEntity.CompanyCode;
-                            email.IsFirstLogin = true;
-                            email.CompanyName = "eBook";
-                            this._ICommonHelperRepository.ChangePasswordMail(email);
-                            //EmailSender.SendPasswordReminderEmail(email, MessageConfig.MessageSettings["CHANGEPASSWORD"], companyInfo.CompanyName);                      
+                            //email = new EmailSenderModel();
+                            //email.Id = usersDetail.Id;
+                            //email.Name = usersDetail.Name;
+                            //email.FirstName = usersDetail.FirstName;
+                            //email.Password = usersDetail.Salt;
+                            //email.EmailId = usersDetail.Email;
+                            //email.CompanyCode = userEntity.CompanyCode;
+                            //email.IsFirstLogin = true;
+                            //email.CompanyName = "eBook";
+                            //this._ICommonHelperRepository.ChangePasswordMail(email);
                             return flag;
                         }
                         else
