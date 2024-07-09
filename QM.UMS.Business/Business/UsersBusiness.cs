@@ -717,10 +717,12 @@ namespace QM.UMS.Business.Business
             }
             catch (RepositoryException repEx)
             {
+                LogManager.Log(repEx);
                 throw new BusinessException("ERROROCCURE", repEx.Message, repEx.StackTrace);
             }
             catch (Exception ex)
             {
+                LogManager.Log(ex);
                 throw new BusinessException("ERROROCCURE", ex.Message, ex.StackTrace);
             }
             finally
@@ -863,8 +865,7 @@ namespace QM.UMS.Business.Business
                 {
                     if (usersDetail.Id > 0)
                     {
-                        user.UnhashedPassword = changePassword.NewPassword;
-                        SecureClientModel sc = new SecureClientModel(user.Id, user.UnhashedPassword);
+                        SecureModel sc = new SecureModel(changePassword.NewPassword);
                         userModel = new UserProfileModel();
                         userModel.Email = usersDetail.Email;
                         userModel.Id = usersDetail.Id;
@@ -887,7 +888,7 @@ namespace QM.UMS.Business.Business
                             //companyInfo = null; //this._IUsersRepository.GetCompanyInfo();
                             //if (companyInfo != null)                            
                             //email.CompanyName = "The Online Book Company";
-                            _ICommonHelperRepository.ChangePasswordMail(email);
+                            //_ICommonHelperRepository.ChangePasswordMail(email);
                             //EmailSender.SendPasswordReminderEmail(email, MessageConfig.MessageSettings["CHANGEPASSWORD"], "");
                             return flag;
                         }
@@ -903,6 +904,7 @@ namespace QM.UMS.Business.Business
             }
             catch (Exception ex)
             {
+                LogManager.Log(ex);
                 throw new BusinessException("CHANGEPASSWORDFAILED", ex.Message, ex.StackTrace);
             }
             finally

@@ -702,7 +702,7 @@ namespace QM.UMS.Repository.Repository
                         user.Name = dr["Name"].ToString();
                         user.Email = dr["Email"].ToString();
                         user.FirstName = dr["FirstName"].ToString();
-                        user.ExpiresOn = DateTimeOffset.Parse(dr["ExpiresOn"].ToString());
+                        user.ExpiresOn =!string.IsNullOrEmpty(ConvertData.ToString(dr["ExpiresOn"]))? DateTimeOffset.Parse(dr["ExpiresOn"].ToString()): new DateTimeOffset();
 						user.Salt = passwordResetCode; //dr["Salt"].ToString();
 						user.Status = dr["Status"].ToString();
 						user.IsFirstLogin = Convert.ToBoolean(dr["IsFirstLogin"].ToString());
@@ -1479,7 +1479,7 @@ namespace QM.UMS.Repository.Repository
                     dbManager.ConnectionString = dbManager.GenerateConnectionString(this.ConnectionId);
                     dbManager.Open();
                     dbManager.Transaction = this.dbManager.Connection.BeginTransaction();
-                    drawavatar(user.UserId, user.FirstName, user.LastName);
+                    //drawavatar(user.UserId, user.FirstName, user.LastName);
                     string query = QueryConfig.UserQuerySettings["UpdateUserProfileDetailWithImage"].ToString();
                     dbManager.CreateParameters(22);
                     dbManager.AddParameters(0, "@UserId", user.UserId);

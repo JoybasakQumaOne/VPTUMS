@@ -52,6 +52,15 @@ namespace QM.UMS.Repository.Repository
                     txtMsg = txtMsg.Replace("[Name]", rdm.Name);
                     txtMsg = txtMsg.Replace("[Password]", rdm.Password);
 
+                    if (rdm.ProductCode == "VPT")
+                    {
+                        txtMsg = txtMsg.Replace("[LoginURL]", Environments.Configurations.Settings.Find(x => x.Key.ToString().Equals("AdminLoginURL")).Value);
+                    }
+                    else
+                    {
+                        txtMsg = txtMsg.Replace("[LoginURL]", Environments.Configurations.Settings.Find(x => x.Key.ToString().Equals("LoginURL")).Value);
+                    }
+
                     mail.To.Add(new MailAddress(rdm.Email));
                     mail.Body = txtMsg;
                     if (templateFile.ToLower().EndsWith(".html") || templateFile.ToLower().EndsWith(".htm"))

@@ -319,7 +319,7 @@ namespace QM.UMSAPI.Controllers
      
         [HttpPost, ActionName("ForgotPassword")]
         //[UserAuthorize(Actions = "CAN_FORGOT_PASSWORD")]
-        public IHttpActionResult Post(string emailId)//, string storedLocation, string orgLogo ,string orgName, string CompanyCode)
+        public IHttpActionResult Post(string emailId)
         {
             try
             {

@@ -46,7 +46,7 @@ namespace QM.UMSAPI.Controllers
         public UsersController(IUsersBusiness IUsersBusiness)
         {
             this._IUsersBusiness = IUsersBusiness;
-            this._IUsersBusiness.Init(System.Web.HttpContext.Current.Request.Headers["RequestId"].ToString());
+            this._IUsersBusiness.Init(Convert.ToString(System.Web.HttpContext.Current.Request.Headers["RequestId"]));
         }
         #endregion
 
